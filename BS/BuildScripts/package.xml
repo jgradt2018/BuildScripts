@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>SFIA_MergeAccountsBatch</members>
+        <members>SFIA_MergeAccountsBatchJobSchedule</members>
+		<members>SFIA_MergeAccountsBatch_Test</members>
+        <name>ApexClass</name>
+    </types>
+    <version>39.0</version>
+</Package>

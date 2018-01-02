@@ -1,0 +1,1125 @@
+
+<project name="SF retrieve and deploy" default="." basedir="." xmlns:sf="antlib:com.salesforce">
+
+    <property file="buildP2.properties"/>
+    <echo> a = a</echo>
+        	
+	<!--<property name="baseDir" value="E:\SCM_TOOLS\Projects\SalesForce\PV01\FarmersBillingMoveUp" />
+	<property name="pathx" value="${baseDir}\sfWorkSpace\DevInt20130729\src1" />-->
+	
+	
+	<target name="retrieveEfnoldev" depends="init">
+			<mkdir dir="${pathx}"/>
+		    <tstamp>
+					<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+			</tstamp> 
+					<echo> timeh = ${file.timeh}</echo>
+	 		<!-- Retrieve the contents into another directory -->
+		    <sf:retrieve username="${sf.usernameEfnoldev}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+			<tstamp>
+				<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+			</tstamp> 
+					<echo> timeh2 = ${file.timeh2}</echo>
+	</target>
+		
+	<target name="retrieveCMLiveAgen" depends="init">
+			<mkdir dir="${pathx}"/>
+		    <tstamp>
+					<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+			</tstamp> 
+					<echo> timeh = ${file.timeh}</echo>
+	 		<!-- Retrieve the contents into another directory -->
+		    <sf:retrieve username="${sf.usernameCMLiveAgen}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+			<tstamp>
+				<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+			</tstamp> 
+					<echo> timeh2 = ${file.timeh2}</echo>
+	</target>
+	
+	<target name="retrieveCSSDev" depends="init">
+				<mkdir dir="${pathx}"/>
+			    <tstamp>
+						<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+				</tstamp> 
+						<echo> timeh = ${file.timeh}</echo>
+		 		<!-- Retrieve the contents into another directory -->
+			    <sf:retrieve username="${sf.usernameCSSDev}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+				<tstamp>
+					<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+				</tstamp> 
+						<echo> timeh2 = ${file.timeh2}</echo>
+	</target>
+	
+    <target name="validateCSSDev" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh= ${file.timeh}</echo>
+    		<echo> username= ${sf.usernameCSSDev} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+       	    <sf:deploy username="${sf.usernameCSSDev}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>	
+	
+	<target name="retrievePET1" depends="init">
+					<mkdir dir="${pathx}"/>
+				    <tstamp>
+							<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+					</tstamp> 
+							<echo> timeh = ${file.timeh}</echo>
+			 		<!-- Retrieve the contents into another directory -->
+				    <sf:retrieve username="${sf.usernamePET1}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+					<tstamp>
+						<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+					</tstamp> 
+							<echo> timeh2 = ${file.timeh2}</echo>
+	</target>
+	
+		
+		<target name="retrieveConfigDev3" depends="init">
+		<mkdir dir="${pathx}"/>
+	    <tstamp>
+				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+				<echo> timeh = ${file.timeh}</echo>
+ 		<!-- Retrieve the contents into another directory -->
+	    <sf:retrieve username="${sf.usernameConfigDev3}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+		<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+				<echo> timeh2 = ${file.timeh2}</echo>
+	</target>
+
+    <target name="validateConfigDev3" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh= ${file.timeh}</echo>
+    		<echo> username= ${sf.usernameConfigDev3} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+       	    <sf:deploy username="${sf.usernameConfigDev3}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+  
+ 	<target name="deployConfigDev3" depends="init">
+		<tstamp>
+			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+		<echo> timeh = ${file.timeh}</echo>
+		<echo>  username= ${sf.usernameConfigDev3} </echo>
+		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+
+	    <sf:deploy username="${sf.usernameConfigDev3}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+	  	<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+    
+    <target name="deployCSSDev" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh = ${file.timeh}</echo>
+    		<echo>  username= ${sf.usernameCSSDev} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+    
+    	    <sf:deploy username="${sf.usernameCSSDev}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+    
+    <target name="deployPET1" depends="init">
+        		<tstamp>
+        			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        		<echo> timeh = ${file.timeh}</echo>
+        		<echo>  username= ${sf.usernamePET1} </echo>
+        		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+        
+        	    <sf:deploy username="${sf.usernamePET1}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+        	  	<tstamp>
+        			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+	
+    <target name="validatePET1" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh= ${file.timeh}</echo>
+    		<echo> username= ${sf.usernamePET1} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+       	    <sf:deploy username="${sf.usernamePET1}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>	
+    
+    <target name="deployCMLA" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh = ${file.timeh}</echo>
+    		<echo>  username= ${sf.usernameCMLA} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+    
+    	    <sf:deploy username="${sf.usernameCMLA}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+	
+	<target name="retrieveBillConv" depends="init">
+		<mkdir dir="${pathx}"/>
+	    <tstamp>
+				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+				<echo> timeh = ${file.timeh}</echo>
+ 		<!-- Retrieve the contents into another directory -->
+	    <sf:retrieve username="${sf.usernameBillConv}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+		<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+				<echo> timeh2 = ${file.timeh2}</echo>
+	</target>
+
+    <target name="validateBillConv" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh= ${file.timeh}</echo>
+    		<echo> username= ${sf.usernameBillConv} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+       	    <sf:deploy username="${sf.usernameBillConv}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+  
+ 	<target name="deployBillConv" depends="init">
+		<tstamp>
+			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+		<echo> timeh = ${file.timeh}</echo>
+		<echo>  username= ${sf.usernameBillConv} </echo>
+		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+
+	    <sf:deploy username="${sf.usernameBillConv}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+	  	<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>	
+	
+	<target name="retrieveConfigDev2" depends="init">
+		<mkdir dir="${pathx}"/>
+	    <tstamp>
+				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+				<echo> timeh = ${file.timeh}</echo>
+ 		<!-- Retrieve the contents into another directory -->
+	    <sf:retrieve username="${sf.usernameConfigDev2}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+		<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+				<echo> timeh2 = ${file.timeh2}</echo>
+	</target>
+
+    <target name="validateConfigDev2" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh= ${file.timeh}</echo>
+    		<echo> username= ${sf.usernameConfigDev2} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+       	    <sf:deploy username="${sf.usernameConfigDev2}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+  
+ 	<target name="deployConfigDev2" depends="init">
+		<tstamp>
+			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+		<echo> timeh = ${file.timeh}</echo>
+		<echo>  username= ${sf.usernameConfigDev2} </echo>
+		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+
+	    <sf:deploy username="${sf.usernameConfigDev2}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+	  	<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+	
+	<target name="retrieveConfigDev" depends="init">
+		<mkdir dir="${pathx}"/>
+	    <tstamp>
+				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+				<echo> timeh = ${file.timex}</echo>
+ 		<!-- Retrieve the contents into another directory -->
+	    <sf:retrieve username="${sf.usernameConfigDev}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+		<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+				<echo> timeh2 = ${file.timeh2}</echo>
+	</target>
+	
+	<target name="retrievePerfQS11" depends="init">
+			<mkdir dir="${pathx}"/>
+		    <tstamp>
+					<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+			</tstamp> 
+					<echo> timeh = ${file.timex}</echo>
+	 		<!-- Retrieve the contents into another directory -->
+		    <sf:retrieve username="${sf.usernamePERFqs11}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+			<tstamp>
+				<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+			</tstamp> 
+					<echo> timeh2 = ${file.timeh2}</echo>
+	</target>
+	
+	
+	<target name="validatePerfQS11" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh= ${file.timeh}</echo>
+    		<echo> username= ${sf.usernamePERFqs11} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+       	    <sf:deploy username="${sf.usernamePERFqs11}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+	
+	<target name="validatePerf" depends="init">
+		<tstamp>
+			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+		<echo> timeh = ${file.timeh}</echo>
+		<echo> username= ${sf.usernamePERF} </echo>
+		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+	    <sf:deploy username="${sf.usernamePERF}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+	  	<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+		<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+	
+	<target name="retrievePerf" depends="init">
+			<mkdir dir="${pathx}"/>
+		    <tstamp>
+					<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+			</tstamp> 
+					<echo> timeh = ${file.timex}</echo>
+	 		<!-- Retrieve the contents into another directory -->
+		    <sf:retrieve username="${sf.usernamePERF}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+			<tstamp>
+				<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+			</tstamp> 
+					<echo> timeh2 = ${file.timeh2}</echo>
+	</target>
+	
+	<target name="deployStaging" depends="init">
+		<tstamp>
+			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+		<echo> timeh = ${file.timeh}</echo>
+		<echo>  username= ${sf.usernameStaging} </echo>
+		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+	    <sf:deploy username="${sf.usernameStaging}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+	  	<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+	
+    <target name="validateConfigDev" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh= ${file.timeh}</echo>
+    		<echo> username= ${sf.usernameConfigDev} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+       	    <sf:deploy username="${sf.usernameConfigDev}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+	
+ 	<target name="deployConfigDev" depends="init">
+		<tstamp>
+			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+		<echo> timeh = ${file.timeh}</echo>
+		<echo>  username= ${sf.usernameConfigDev} </echo>
+		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+
+	    <sf:deploy username="${sf.usernameConfigDev}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+	  	<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+	<target name="retrieveR4Dev" depends="init">
+    		<mkdir dir="${pathx}"/>
+    	    <tstamp>
+    				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh = ${file.timex}</echo>
+     		<!-- Retrieve the contents into another directory -->
+    	    <sf:retrieve username="${sf.usernameR4Dev}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+    		<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+    
+	<target name="validateR4Dev" depends="init">
+        		<tstamp>
+        			<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        		<echo> timeh= ${file.timex}</echo>
+        		<echo> username= ${sf.usernameR4Dev} </echo>
+        		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+           	    <sf:deploy username="${sf.usernameR4Dev}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+        	  	<tstamp>
+        			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+      
+    <target name="deployR4Dev" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh = ${file.timex}</echo>
+    		<echo>  username= ${sf.usernameR4Dev} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+    
+    	    <sf:deploy username="${sf.usernameR4Dev}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+    
+    <target name="retrieveProdEmerg" depends="init">
+        		<mkdir dir="${pathx}"/>
+        	    <tstamp>
+        				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        				<echo> timeh = ${file.timex}</echo>
+         		<!-- Retrieve the contents into another directory -->
+        	    <sf:retrieve username="${sf.usernameProdEmerg}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+        		<tstamp>
+        			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        				<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+    
+     <target name="deployProdEmerg" depends="init">
+        		<tstamp>
+        			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        		<echo> timeh = ${file.timex}</echo>
+        		<echo>  username= ${sf.usernameProdEmerg} </echo>
+        		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+        
+        	    <sf:deploy username="${sf.usernameProdEmerg}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+        	  	<tstamp>
+        			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+    
+    
+    
+	<target name="retrieveProdFix" depends="init">
+    		<mkdir dir="${pathx}"/>
+    	    <tstamp>
+    				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh = ${file.timex}</echo>
+     		<!-- Retrieve the contents into another directory -->
+    	    <sf:retrieve username="${sf.usernameProdFix}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+    		<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+    
+	<target name="validateProdFix" depends="init">
+        		<tstamp>
+        			<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        		<echo> timeh= ${file.timex}</echo>
+        		<echo> username= ${sf.usernameProdFix} </echo>
+        		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+           	    <sf:deploy username="${sf.usernameProdFix}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+        	  	<tstamp>
+        			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+      
+    <target name="deployProdFix" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh = ${file.timex}</echo>
+    		<echo>  username= ${sf.usernameProdFix} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+    
+    	    <sf:deploy username="${sf.usernameProdFix}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+	
+    <target name="retrievePlaDev" depends="init">
+    		<mkdir dir="${pathx}"/>
+    	    <tstamp>
+    				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh = ${file.timex}</echo>
+     		<!-- Retrieve the contents into another directory -->
+    	    <sf:retrieve username="${sf.usernamePladev}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+    		<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+    
+	<target name="validatePlaDev" depends="init">
+        		<tstamp>
+        			<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        		<echo> timeh= ${file.timex}</echo>
+        		<echo> username= ${sf.usernamePladev} </echo>
+        		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+           	    <sf:deploy username="${sf.usernamePladev}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+        	  	<tstamp>
+        			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+      
+    <target name="deployPlaDev" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh = ${file.timex}</echo>
+    		<echo>  username= ${sf.usernamePladev} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+    
+    	    <sf:deploy username="${sf.usernamePladev}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>	
+	
+    <target name="retrievePlaReg" depends="init">
+    		<mkdir dir="${pathx}"/>
+    	    <tstamp>
+    				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh = ${file.timex}</echo>
+     		<!-- Retrieve the contents into another directory -->
+    	    <sf:retrieve username="${sf.usernamePlaReg}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+    		<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+    
+	<target name="validatePlaReg" depends="init">
+        		<tstamp>
+        			<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        		<echo> timeh= ${file.timex}</echo>
+        		<echo> username= ${sf.usernamePlaReg} </echo>
+        		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+           	    <sf:deploy username="${sf.usernamePlaReg}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+        	  	<tstamp>
+        			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+      
+    <target name="deployPlaReg" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh = ${file.timex}</echo>
+    		<echo>  username= ${sf.usernamePlaReg} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+    
+    	    <sf:deploy username="${sf.usernamePlaReg}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+	
+	<target name="retrieveR4RegTest" depends="init">
+		<mkdir dir="${pathx}"/>
+	    <tstamp>
+				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+				<echo> timeh = ${file.timeh}</echo>
+ 		<!-- Retrieve the contents into another directory -->
+	    <sf:retrieve username="${sf.usernameR4RegTest}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+		<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+				<echo> timeh2 = ${file.timeh2}</echo>
+	</target>
+
+    <target name="validateR4RegTest" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh= ${file.timeh}</echo>
+    		<echo> username= ${sf.usernameR4RegTest} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+       	    <sf:deploy username="${sf.usernameR4RegTest}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+  
+ 	<target name="deployR4RegTest" depends="init">
+		<tstamp>
+			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+		<echo> timeh = ${file.timeh}</echo>	
+		<echo>  username= ${sf.usernameR4RegTest} </echo>
+		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+
+	    <sf:deploy username="${sf.usernameR4RegTest}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+	  	<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+	
+    <target name="retrieveProdReg" depends="init">
+    		<mkdir dir="${pathx}"/>
+    	    <tstamp>
+    				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh = ${file.timex}</echo>
+     		<!-- Retrieve the contents into another directory -->
+    	    <sf:retrieve username="${sf.usernameProdReg}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+    		<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+    
+	<target name="validateProdReg" depends="init">
+        		<tstamp>
+        			<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        		<echo> timeh= ${file.timex}</echo>
+        		<echo> username= ${sf.usernameProdReg} </echo>
+        		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+           	    <sf:deploy username="${sf.usernameProdReg}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+        	  	<tstamp>
+        			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+      
+    <target name="deployProdReg" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh = ${file.timex}</echo>
+    		<echo>  username= ${sf.usernameProdReg} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+    
+    	    <sf:deploy username="${sf.usernameProdReg}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>	
+	<target name="retrieveTrialOrg1" depends="init">
+		<mkdir dir="${pathx}"/>
+	    <tstamp>
+				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+				<echo> timeh = ${file.timeh}</echo>
+ 		<!-- Retrieve the contents into another directory -->
+	    <sf:retrieve username="${sf.usernameTrialOrg1}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+		<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+				<echo> timeh2 = ${file.timeh2}</echo>
+	</target>
+
+    <target name="validateTrialOrg1" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh= ${file.timeh}</echo>
+    		<echo> username= ${sf.usernameTrialOrg1} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+       	    <sf:deploy username="${sf.usernameTrialOrg1}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+	
+	<target name="deployTrialOrg1" depends="init">
+		<tstamp>
+			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+		<echo> timeh = ${file.timeh}</echo>
+		<echo> username= ${sf.usernameTrialOrg1} </echo>
+		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+
+	    <sf:deploy username="${sf.usernameTrialOrg1}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+	  	<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+  
+ 	<target name="deployPERFqs11" depends="init">
+		<tstamp>
+			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+		<echo> timeh = ${file.timeh}</echo>
+		<echo>  username= ${sf.usernamePERFqs11} </echo>
+		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+
+	    <sf:deploy username="${sf.usernamePERFqs11}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+	  	<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+    
+    <target name="deployPERF" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh = ${file.timeh}</echo>
+    		<echo>  username= ${sf.usernamePERF} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+    
+    	    <sf:deploy username="${sf.usernamePERF}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+	
+	<target name="retrieveTempTrialOrg" depends="init">
+		<mkdir dir="${pathx}"/>
+	    <tstamp>
+				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+				<echo> timeh = ${file.timeh}</echo>
+ 		<!-- Retrieve the contents into another directory -->
+	    <sf:retrieve username="${sf.usernameTempTrialOrg}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+		<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+		<echo> timeh2 = ${file.timeh2}</echo>
+	</target>
+
+    <target name="validateTempTrialOrg" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh= ${file.timeh}</echo>
+    		<echo> username= ${sf.usernameTempTrialOrg </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+       	    <sf:deploy username="${sf.usernameTempTrialOrg}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+  
+ 	<target name="deployTempTrialOrg" depends="init">
+		<tstamp>
+			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+		<echo> timeh = ${file.timeh}</echo>
+		<echo>  username= ${sf.usernameTempTrialOrg} </echo>
+		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+
+	    <sf:deploy username="${sf.usernameTempTrialOrg}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+	  	<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+    
+    <target name="retrieveIterTest" depends="init">
+    		<mkdir dir="${pathx}"/>
+    	    <tstamp>
+    				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh = ${file.timeh}</echo>
+     		<!-- Retrieve the contents into another directory -->
+    	    <sf:retrieve username="${sf.usernameIterTest}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+    		<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh2 = ${file.timeh2}</echo>
+    	</target>
+    
+        <target name="validateIterTest" depends="init">
+        		<tstamp>
+        			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        		<echo> timeh= ${file.timeh}</echo>
+        		<echo> username= ${sf.usernameIterTest} </echo>
+        		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+           	    <sf:deploy username="${sf.usernameIterTest}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+        	  	<tstamp>
+        			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        			<echo> timeh2 = ${file.timeh2}</echo>
+        </target>
+      
+     	<target name="deployIterTest" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh = ${file.timeh}</echo>
+    		<echo>  username= ${sf.usernameIterTest} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+    
+    	    <sf:deploy username="${sf.usernameIterTest}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+	
+    <target name="retrievePerfTest" depends="init">
+    		<mkdir dir="${pathx}"/>
+    	    <tstamp>
+    				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh = ${file.timex}</echo>
+     		<!-- Retrieve the contents into another directory -->
+    	    <sf:retrieve username="${sf.usernamePerfTest}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+    		<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+    
+	<target name="validatePerfTest" depends="init">
+        		<tstamp>
+        			<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        		<echo> timeh= ${file.timex}</echo>
+        		<echo> username= ${sf.usernamePerfTest} </echo>
+        		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+           	    <sf:deploy username="${sf.usernamePerfTest}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+        	  	<tstamp>
+        			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+      
+    <target name="deployPerfTest" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh = ${file.timex}</echo>
+    		<echo>  username= ${sf.usernamePerfTest} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+    
+    	    <sf:deploy username="${sf.usernamePerfTest}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+
+    <target name="retrieveUAT1" depends="init">
+    		<mkdir dir="${pathx}"/>
+    	    <tstamp>
+    				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh = ${file.timex}</echo>
+     		<!-- Retrieve the contents into another directory -->
+    	    <sf:retrieve username="${sf.usernameUAT1}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+    		<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh2 = ${file.timeh2}</echo>
+    </target>	
+    
+    <target name="deployUAT1" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh = ${file.timeh}</echo>
+    		<echo>  username= ${sf.usernameUAT1} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+    
+    	    <sf:deploy username="${sf.usernameUAT1}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>	
+    
+    <target name="retrieveUAT2" depends="init">
+        		<mkdir dir="${pathx}"/>
+        	    <tstamp>
+        				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        				<echo> timeh = ${file.timex}</echo>
+         		<!-- Retrieve the contents into another directory -->
+        	    <sf:retrieve username="${sf.usernameUAT2}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+        		<tstamp>
+        			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        				<echo> timeh2 = ${file.timeh2}</echo>
+    </target>	
+    
+    <target name="deployUAT2" depends="init">
+        		<tstamp>
+        			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        		<echo> timeh = ${file.timeh}</echo>
+        		<echo>  username= ${sf.usernameUAT2} </echo>
+        		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+        
+        	    <sf:deploy username="${sf.usernameUAT2}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+        	  	<tstamp>
+        			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+	
+    <target name="retrieveAFT1" depends="init">
+        		<mkdir dir="${pathx}"/>
+        	    <tstamp>
+        				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        				<echo> timeh = ${file.timex}</echo>
+         		<!-- Retrieve the contents into another directory -->
+        	    <sf:retrieve username="${sf.usernameAFT1}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+        		<tstamp>
+        			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        				<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+
+	<target name="validateAFT1" depends="init">
+        		<tstamp>
+        			<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        		<echo> timeh= ${file.timex}</echo>
+        		<echo> username= ${sf.usernameAFT1} </echo>
+        		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+           	    <sf:deploy username="${sf.usernameAFT1}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+        	  	<tstamp>
+        			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>	
+	
+    <target name="deployAFT1" depends="init">
+        		<tstamp>
+        			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        		<echo> timeh = ${file.timeh}</echo>
+        		<echo>  username= ${sf.usernameAFT1} </echo>
+        		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+        
+        	    <sf:deploy username="${sf.usernameAFT1}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+        	  	<tstamp>
+        			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>	
+	    
+    <target name="retrieveProd" depends="init">
+    		<mkdir dir="${pathx}"/>
+    	    <tstamp>
+    				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh = ${file.timex}</echo>
+     		<!-- Retrieve the contents into another directory -->
+    	    <sf:retrieve username="${sf.usernameProd}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+    		<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+    
+	<target name="validateProd" depends="init">
+        		<tstamp>
+        			<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        		<echo> timeh= ${file.timex}</echo>
+        		<echo> username= ${sf.usernameProd} </echo>
+        		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+           	    <sf:deploy username="${sf.usernameProd}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+        	  	<tstamp>
+        			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+        		</tstamp> 
+        			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+      
+    <target name="deployProd" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh = ${file.timex}</echo>
+    		<echo>  username= ${sf.usernameProd} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+    
+    	    <sf:deploy username="${sf.usernameProd}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+    
+    
+    <target name="retrieveStaging" depends="init">
+    		<mkdir dir="${pathx}"/>
+    	    <tstamp>
+    				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh = ${file.timex}</echo>
+     		<!-- Retrieve the contents into another directory -->
+    	    <sf:retrieve username="${sf.usernameStaging}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+    		<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh2 = ${file.timeh2}</echo>
+	</target>
+	
+	<target name="deployeFNOLSIT1" depends="init">
+	    		<tstamp>
+	    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+	    		</tstamp> 
+	    		<echo> timeh = ${file.timex}</echo>
+	    		<echo>  username= ${sf.usernameeFNOLSIT1} </echo>
+	    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+	    
+	    	    <sf:deploy username="${sf.usernameeFNOLSIT1}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+	    	  	<tstamp>
+	    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+	    		</tstamp> 
+	    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+    
+    <target name="retrieveeFNOLSIT1" depends="init">
+    		<mkdir dir="${pathx}"/>
+    	    <tstamp>
+    				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh = ${file.timeh}</echo>
+     		<!-- Retrieve the contents into another directory -->
+    	    <sf:retrieve username="${sf.usernameeFNOLSIT1}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+    		<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    				<echo> timeh2 = ${file.timeh2}</echo>
+	</target>
+	
+	<target name="retrieveLiveAgentT" depends="init">
+		<mkdir dir="${pathx}"/>
+	    <tstamp>
+				<format property="file.timex" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+				<echo> timeh = ${file.timeh}</echo>
+ 		<!-- Retrieve the contents into another directory -->
+	    <sf:retrieve username="${sf.usernameLiveAgentT}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${pathx}" unpackaged="${baseDir}\BuildScripts\package.xml" />	
+		<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+				<echo> timeh2 = ${file.timeh2}</echo>
+	</target>
+
+    <target name="validateLiveAgentT" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh= ${file.timeh}</echo>
+    		<echo> username= ${sf.usernameLiveAgentT} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+       	    <sf:deploy username="${sf.usernameLiveAgentT}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+  
+ 	<target name="deployLiveAgentT" depends="init">
+		<tstamp>
+			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+		<echo> timeh = ${file.timeh}</echo>
+		<echo>  username= ${sf.usernameLiveAgentT} </echo>
+		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+
+	    <sf:deploy username="${sf.usernameLiveAgentT}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="false"  logType="Debugonly" pollWaitMillis="250000" />
+	  	<tstamp>
+			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+		</tstamp> 
+			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+
+    <target name="validateStaging" depends="init">
+    		<tstamp>
+    			<format property="file.timeh" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    		<echo> timeh= ${file.timeh}</echo>
+    		<echo> username= ${sf.usernameStaging} </echo>
+    		<echo> sf.serverurl}=${sf.serverurl}  deployRoot=${pathx} </echo>
+       	    <sf:deploy username="${sf.usernameStaging}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="${pathx}" checkOnly="true"  logType="Debugonly" pollWaitMillis="250000" />
+    	  	<tstamp>
+    			<format property="file.timeh2" pattern="yyyyMMdd_HHmmss" locale="en"/>
+    		</tstamp> 
+    			<echo> timeh2 = ${file.timeh2}</echo>
+    </target>
+				
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp/>
+		<input message="secure-input:" addproperty="sf.password">
+			<handler classname="org.apache.tools.ant.input.SecureInputHandler" />
+		</input>	
+    </target>
+</project>
